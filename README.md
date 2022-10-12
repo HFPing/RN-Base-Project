@@ -84,7 +84,32 @@ Assuming it's development in a mac OS machine
 
 # Local execution
 
+As this is just a base template for apps, it does not contemplate environments. The app build on top of this must implement their own environment-dependant build commands. (Regardless this, the necessary libraries must be implemented in this base repository since it's common for all other apps to implement environment builds)
+
+## 1. Install dependencies
+```
+yarn
+```
+
+## 2. Local development build on emulator of physical device
+
+For Android
+```
+yarn android
+```
+
+For iOS:
+```
+yarn ios
+```
+
 # Generate product
+
+TODO
+
+# General information
+
+[Adding TypeScript to an Existing Project​](https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project)
 
 [XCode]: https://developer.apple.com/xcode/
 [RN_Dev]: https://reactnative.dev/docs/environment-setup

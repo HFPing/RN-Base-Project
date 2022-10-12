@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -72,8 +64,7 @@ const App = () => {
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits.
-          <Section title="See Your Changes">
-          </Section>
+            <Section title="See Your Changes" />
             <ReloadInstructions />
           </Section>
           <Section title="Debug">
