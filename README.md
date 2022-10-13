@@ -1,11 +1,14 @@
 # Ract Native Base Project
+
 Base react native project with defined arquitecture, appropiate documentation and example implementations
 
-# Motivation
+## Motivation
+
 React native project standardization is a difficult task when stating a project from sratch, or trying to update an existing project.
 This repo aims to define a standar/common strucutre with wich RN projects can be based upon, in order to accelerate and simplify the way the project is assimilated, documentation is implemented, code elements are developed and overall archutecture of it.
 
-# Objectives
+## Objectives
+
 1. Create a base React Native _template_ project with which more specific projects can be created
     - This template must implement an scalable arquitecture to facilitate and make implementations _procedural_ (implementing new features should be part of a guideline, to make them faster at least)
     - Must implement a clear example of test suites for many differet types of screens
@@ -58,58 +61,86 @@ This repo aims to define a standar/common strucutre with wich RN projects can be
 13. Static and dynamic? code analysis. (Sonar, rules, unused code)
 14. Adaptable to many screen sizes. Tablet and smartphone into consideration
 
+## Developer environment
 
-# Developer environment
 Assuming it's development in a mac OS machine
 
 - [React native development setup][RN_Dev]
-    - Won't list specific OS dependencies. They are listed and maintained in the official page
+  - Won't list specific OS dependencies. They are listed and maintained in the official page
 
 - [Node JS][NodeJS] (Version 16.16.0 used for startup)
-    - React Native is a NodeJS project at it's code, so a local Javascript runtime enviroment is necessary
-    - There are other runtime environments worth researching to use in RN, like [Bun], which is supposedly faster in many ways
-    - It's recommendede to use to version manager tool to handle different versions of node, as other projects (using different versions of react native or different projects alltogether) like [Fast Node Manager][fnm]
+  - React Native is a NodeJS project at it's code, so a local Javascript runtime enviroment is necessary
+  - There are other runtime environments worth researching to use in RN, like [Bun], which is supposedly faster in many ways
+  - It's recommendede to use to version manager tool to handle different versions of node, as other projects (using different versions of react native or different projects alltogether) like [Fast Node Manager][fnm]
 
 - [XCode] (Version 13.4.1 used for startup) for iOS development
-    - A lot of times, projects depend upons specific versions of this IDE. Downloading it from the App Store may not always make a project work, so it's adviced to specify and keep the version used when the app was first created
-    - Since you can only download the latest XCode version using the App Store, it's encouraged to use the [Apple Developer Download Site][Apple_Dev_Download] to download a specific version
+  - A lot of times, projects depend upons specific versions of this IDE. Downloading it from the App Store may not always make a project work, so it's adviced to specify and keep the version used when the app was first created
+  - Since you can only download the latest XCode version using the App Store, it's encouraged to use the [Apple Developer Download Site][Apple_Dev_Download] to download a specific version
 
 - [Android Studio][Android_Studio] for Android development
-    - Unlike XCode, this IDE doesn't seem to break builds with updates, so it's recomended to keep it, as well as it's interna dependencies, updated. Particularly the emulator
+  - Unlike XCode, this IDE doesn't seem to break builds with updates, so it's recomended to keep it, as well as it's interna dependencies, updated. Particularly the emulator
 
 - [Java Developmen Kit][JDK_Info] (Version 11.0.5 used for startup) for CLI Android builds
-    - This and version 8 usually works fine. Later versions haven't worked with the current version of React Native
-    - As to keep and maintain specific java versions (if necessary), it's recommended to use [jEnv] to manage and install specific versions and switch between them in the machine
-    - Open JDKs downloaded from Homebew work just fine
+  - This and version 8 usually works fine. Later versions haven't worked with the current version of React Native
+  - As to keep and maintain specific java versions (if necessary), it's recommended to use [jEnv] to manage and install specific versions and switch between them in the machine
+  - Open JDKs downloaded from Homebew work just fine
 
-# Local execution
+## Local execution
 
 As this is just a base template for apps, it does not contemplate environments. The app build on top of this must implement their own environment-dependant build commands. (Regardless this, the necessary libraries must be implemented in this base repository since it's common for all other apps to implement environment builds)
 
-## 1. Install dependencies
-```
+### 1. Install dependencies
+
+```bash
 yarn
 ```
 
-## 2. Local development build on emulator of physical device
+Only **yarn** will work to make the use of package managers more standardized
+
+### 2. Local development build on emulator of physical device
 
 For Android
-```
-yarn android
+
+```bash
+yarn android:run-debug
 ```
 
 For iOS:
-```
+
+```bash
 yarn ios
 ```
 
-# Generate product
+## Generate product
+
+Following the official [documentation][build-android-release], we can create the AAB with:
+
+```bash
+cd android
+./gradlew bundleRelease
+```
+
+A modified version of the command was implemented to generate APKs (mainly for internal test or release verfification user tests) executing the command:
+
+```bash
+yarn android:build-release
+```
+
+It generates the APK in the path: [android/app/build/outputs/apk/release/app-release.apk](android/app/build/outputs/apk/release/)
+
+---
+
+## Project Structure
 
 TODO
 
-# General information
+---
+
+## General information
 
 [Adding TypeScript to an Existing Project​](https://reactnative.dev/docs/typescript#adding-typescript-to-an-existing-project)
+
+---
 
 [XCode]: https://developer.apple.com/xcode/
 [RN_Dev]: https://reactnative.dev/docs/environment-setup
@@ -117,7 +148,6 @@ TODO
 [Android_Studio]: https://developer.android.com/studio
 [JDK_Info]: https://www.ibm.com/docs/en/i/7.3?topic=platform-java-development-kit
 [jEnv]: https://www.jenv.be
-[Homebrew]: https://brew.sh
 [NodeJS]: https://nodejs.org/en/
 [Bun]: https://bun.sh
 [fnm]: https://github.com/Schniz/fnm
@@ -130,3 +160,4 @@ TODO
 [env_file]: https://www.ibm.com/docs/en/aix/7.2?topic=files-env-file
 [google_analytics]: https://analytics.google.com/analytics/web/provision/#/provision
 [depdendency_inversion]: https://stackify.com/dependency-inversion-principle/
+[build-android-release]: https://reactnative.dev/docs/signed-apk-android#generating-the-release-aab
